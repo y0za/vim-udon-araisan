@@ -1,4 +1,5 @@
 let s:plugin_name = 'vim-udon-araisan'
+let s:frame_num = 4
 
 function! s:render_frame(bufname, frame) abort
   if bufnr(a:bufname) == -1
@@ -66,7 +67,7 @@ function! s:frame_manager.load_frames() abort
     throw s:plugin_name . ' directory is not found in rantimepath'
   endif
 
-  for i in range(4)
+  for i in range(s:frame_num)
     let frame_path = dir . '/resource/frame' . i . '.txt'
     let frame = join(readfile(frame_path), "\n")
     call add(self.frames, frame)
