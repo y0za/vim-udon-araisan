@@ -1,5 +1,6 @@
 let s:plugin_name = 'vim-udon-araisan'
 let s:frame_num = 4
+let s:interframe_gap = 150
 
 function! s:render_frame(bufname, frame) abort
   if bufnr(a:bufname) == -1
@@ -86,7 +87,7 @@ endfunction
 
 function! s:frame_manager.start() abort
   call s:frame_manager.setup()
-  let self.timer = timer_start(200, s:frame_manager.render_next, {'repeat': -1})
+  let self.timer = timer_start(s:interframe_gap, s:frame_manager.render_next, {'repeat': -1})
 endfunction
 
 function! s:frame_manager.stop() abort
