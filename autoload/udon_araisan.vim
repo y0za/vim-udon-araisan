@@ -58,18 +58,9 @@ function! s:frame_manager.setup() abort
 endfunction
 
 function! s:frame_manager.load_frames() abort
-  let dir = ''
-  for path in split(&runtimepath, ',')
-    if path =~# s:plugin_name
-      let dir = path
-    endif
-  endfor
-  if dir == ''
-    throw s:plugin_name . ' directory is not found in runtimepath'
-  endif
-
+  let dir = expand('<sfile>:p:h') . '/resource'
   for i in range(s:frame_num)
-    let frame_path = dir . '/resource/frame' . i . '.txt'
+    let frame_path = dir . '/frame' . i . '.txt'
     let frame = join(readfile(frame_path), "\n")
     call add(self.frames, frame)
   endfor
