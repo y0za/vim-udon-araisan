@@ -65,7 +65,7 @@ function! s:frame_manager.load_frames() abort
     endif
   endfor
   if dir == ''
-    throw s:plugin_name . ' directory is not found in rantimepath'
+    throw s:plugin_name . ' directory is not found in runtimepath'
   endif
 
   for i in range(s:frame_num)
